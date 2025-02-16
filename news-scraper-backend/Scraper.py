@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # --- NewsAPI Configuration ---
-NEWSAPI_KEY = "a61319cc0f454f2788912e55a4482a02" # Get API key from environment variable
+NEWSAPI_KEY = "NEWSAPI_KEY" # Get API key from environment variable
 NEWSAPI_ENDPOINT = "https://newsapi.org/v2/everything"
 
 # --- Social Media Configuration (Placeholder) ---
