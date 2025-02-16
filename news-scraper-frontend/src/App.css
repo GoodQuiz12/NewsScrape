@@ -1,0 +1,226 @@
+/* src/App.css - Modern Dark Theme CSS (Gemini AI Inspired, i3 Pane Animations) - Modified for SF Pro Fonts, Pop-out Tiles, Black Ring */
+/* src/App.css - Using SF Pro as Web Fonts */
+
+@font-face {
+  font-family: "SF Pro Display Web"; /* Define a name for your web font */
+  src: url("C:\Users\Owner\Desktop\AllScrape\news-scraper-frontend\sfprodisplaymedium-webfont.woff2") format("woff2"); /* Path relative to 'public' folder */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Optimize font loading */
+}
+
+@font-face {
+  font-family: "SF Pro Text Web"; /* Define a name for your web font */
+  src: url("C:\Users\Owner\Desktop\AllScrape\news-scraper-frontend\sf-pro-text_regular.woff2") format("woff2"); /* Path relative to 'public' folder */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Optimize font loading */
+}
+
+:root {
+  /* Modified Gemini AI Dark Theme Color Palette - Black Background, SF Pro Fonts, Pop-out Tiles */
+  --background-dark: #000000;        /* **Black background** */
+  --background-lighter: #1a1a1a;     /* Slightly lighter background for elements */
+  --text-primary: #f0f0f0;         /* Primary text color (light gray/off-white) */
+  --text-secondary: #d0d0d0;       /* Secondary text color (slightly darker gray) */
+  --accent-color: #4285f4;          /* Gemini Blue Accent (you can adjust) */
+  --accent-color-hover: #5a95f7;    /* Hover state for accent */
+  --pane-background: var(--background-lighter); /* Pane background is slightly lighter */
+  --pane-border-radius: 12px;       /* **Increased Rounded corners for panes** */
+  --input-border-radius: 8px;      /* Rounded corners for inputs */
+  --button-border-radius: 8px;     /* Rounded corners for buttons */
+  --spacing-medium: 20px;
+  --spacing-small: 10px;
+  --font-family-headers: "SF Pro Display Web", sans-serif; /* **SF Pro Display for Headers** */
+  --font-family-body: "SF Pro Text Web", sans-serif; /* **SF Pro Text for Body** */
+  --box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slightly darker shadow for dark theme */
+  --box-shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.4); /* **Increased Shadow for Pop-out Hover** */
+  --transition-duration: 0.2s;      /* Base transition duration */
+}
+
+/* Set body background to black for the "ring" effect */
+body {
+  background-color: black; /* **Black body background** */
+  font-family: var(--font-family-body); /* Default body font */
+}
+
+.App {
+  font-family: var(--font-family-body); /* Default app font is body font */
+  margin: var(--spacing-medium) auto; /* Center the app horizontally */
+  max-width: 1200px; /* Optional: Limit app width for larger screens */
+  background-color: var(--background-dark); /* Black background for the app content area */
+  color: var(--text-primary);         /* Light text color */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: var(--spacing-medium);
+  color: var(--text-primary);        /* Light heading color */
+  font-family: var(--font-family-headers); /* **SF Pro Display for H1** */
+  font-weight: bold; /* Make headers bold */
+}
+
+.input-area {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-medium) * 1.5); /* Increased bottom margin */
+}
+
+.input-area label {
+  margin-right: var(--spacing-small);
+  color: var(--text-secondary);      /* Slightly less prominent label text */
+  display: block; /* Stack label above input */
+  margin-bottom: var(--spacing-small) / 2;
+  font-family: var(--font-family-body); /* **SF Pro Text for labels** */
+}
+
+.input-area input[type="text"] {
+  padding: var(--spacing-small);
+  border: 1px solid #444;          /* Darker border for input */
+  border-radius: var(--input-border-radius);
+  width: 300px;
+  font-size: 16px;
+  background-color: var(--background-lighter); /* Slightly lighter input background */
+  color: var(--text-primary);         /* Light text in input */
+  transition: border-color var(--transition-duration) ease;
+  font-family: var(--font-family-body); /* **SF Pro Text for inputs** */
+}
+
+.input-area input[type="text"]:focus {
+  border-color: var(--accent-color); /* Accent color on focus */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 2px var(--accent-color); /* Subtle accent color box shadow on focus */
+}
+
+
+.input-area button {
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: none;
+  border-radius: var(--button-border-radius);
+  background-color: var(--accent-color); /* Accent color button */
+  color: var(--text-primary);         /* Light text on button */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+  margin-left: var(--spacing-small);
+  font-family: var(--font-family-body); /* **SF Pro Text for buttons** */
+  font-weight: medium; /* Slightly bolder button text */
+}
+
+.input-area button:hover {
+  background-color: var(--accent-color-hover); /* Lighter accent on hover */
+  transform: scale(1.05); /* Slight scale up on button hover */
+}
+
+.input-area button:active {
+  transform: scale(0.98); /* Slight scale down on button active (click) */
+}
+
+.input-area button:disabled {
+  background-color: #666; /* Grayed out disabled button */
+  cursor: not-allowed;
+  transform: scale(1); /* Reset scale if disabled */
+}
+
+.results-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-medium);
+  margin-top: var(--spacing-medium);
+}
+
+.news-pane {
+  background-color: var(--pane-background); /* Lighter pane background */
+  border-radius: var(--pane-border-radius); /* **Rounded corners for panes** */
+  padding: var(--spacing-medium);
+  box-shadow: var(--box-shadow-light);      /* Darker shadow for dark theme */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease; /* Smooth transitions */
+  opacity: 0; /* Initially hidden for fade-in animation */
+  transform: translateY(20px); /* Start slightly translated down */
+  animation: fadeInPane var(--transition-duration) forwards ease-out; /* Fade-in animation */
+}
+
+@keyframes fadeInPane {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Delay animation for each pane for a staggered effect (optional, but nice) */
+.news-pane:nth-child(n+2) {
+  animation-delay: 0.1s; /* Slight delay for the second pane onwards */
+}
+.news-pane:nth-child(n+3) {
+  animation-delay: 0.2s; /* Further delay for the third pane onwards */
+}
+/* ... and so on, you can adjust the delays or use JavaScript for more dynamic staggering */
+
+
+.news-pane:hover {
+  transform: scale(1.05); /* **Increased Scale for Pop-out Hover** */
+  box-shadow: var(--box-shadow-medium); /* **More Pronounced Shadow for Pop-out Hover** */
+}
+
+.news-pane h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-small);
+  font-size: 1.2em;
+  line-height: 1.3;
+  color: var(--text-primary);        /* Light title color */
+  font-family: var(--font-family-headers); /* **SF Pro Display for H3 (Titles)** */
+  font-weight: bold; /* Make titles bold */
+}
+
+.news-pane p {
+  margin-bottom: calc(var(--spacing-small) * 1.5); /* Slightly more bottom margin for summary */
+  color: var(--text-secondary);      /* Secondary text color for summary */
+  line-height: 1.4;
+  flex-grow: 1;
+  font-family: var(--font-family-body); /* **SF Pro Text for paragraphs (Summaries)** */
+}
+
+.news-pane a {
+  color: var(--accent-color);        /* Accent color for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color var(--transition-duration) ease;
+  font-family: var(--font-family-body); /* **SF Pro Text for links** */
+}
+
+.news-pane a:hover {
+  color: var(--accent-color-hover);  /* Lighter accent on link hover */
+  text-decoration: underline;
+}
+
+.news-pane.large-pane {
+  grid-column: span 2;
+}
+
+.news-pane img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: var(--spacing-small);
+  border-radius: var(--pane-border-radius) / 2; /* Rounded corners for images in panes */
+}
+
+.error {
+  color: #ff6b6b; /* Red error color, adjust for dark theme if needed */
+  margin-top: var(--spacing-small);
+  text-align: center; /* Center error text */
+  font-family: var(--font-family-body); /* **SF Pro Text for error messages** */
+}
+
+
+/* Focus styles for accessibility in dark theme */
+.input-area input[type="text"]:focus,
+.input-area button:focus,
+.news-pane a:focus {
+  outline: 2px solid var(--accent-color); /* Accent color focus outline */
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--accent-color); /* Add box-shadow focus effect for better visibility in dark theme */
+}
